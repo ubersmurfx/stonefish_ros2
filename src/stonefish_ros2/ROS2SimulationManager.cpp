@@ -1115,7 +1115,8 @@ void ROS2SimulationManager::PushCallback(const std_msgs::msg::Float64::SharedPtr
 
 void ROS2SimulationManager::VBSCallback(const std_msgs::msg::Float64::SharedPtr msg, VariableBuoyancy* act)
 {
-    act->setFlowRate(msg->data);
+    RCLCPP_INFO_STREAM(nh_->get_logger(), "VBS COMMAND RECEIVED: " << msg->data);
+    act->setFlowRate(msg->data); // задать скорость заполнения
 }
 
 void ROS2SimulationManager::CommCallback(const std_msgs::msg::String::SharedPtr msg, Comm* comm)
